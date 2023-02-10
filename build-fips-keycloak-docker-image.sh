@@ -34,7 +34,8 @@ DIRNAME="$(dirname "$RESOLVED_NAME")"
 echo "DIRNAME: $DIRNAME";
 
 if [ x"$KEYSTORE_FORMAT" == "x" ]; then
-    KEYSTORE_FORMAT = 'pkcs12';
+    echo "Environment variable KEYSTORE_FORMAT must be set";
+    exit 1;
 fi;
 export KEYSTORE_FILE=keycloak-fips.keystore.$KEYSTORE_FORMAT;
 echo "$KEYSTORE_FORMAT: $KEYSTORE_FORMAT";
