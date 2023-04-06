@@ -6,7 +6,7 @@ WORKDIR /opt/keycloak
 RUN cp /tmp/files/*.jar /opt/keycloak/providers/
 RUN cp /tmp/files/keycloak-fips.keystore.* /opt/keycloak/bin/
 
-RUN /opt/keycloak/bin/kc.sh build --fips-mode=enabled
+RUN /opt/keycloak/bin/kc.sh build --features=fips --fips-mode=strict
 
 FROM quay.io/keycloak/keycloak:nightly
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
